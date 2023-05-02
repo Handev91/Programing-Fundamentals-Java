@@ -1,0 +1,42 @@
+package IzpitFundamentals;
+
+import java.util.Scanner;
+
+public class BurgerBus_01 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int numberCity = Integer.parseInt(scanner.nextLine());
+        double totalProfit = 0;
+
+        for (int i = 1; i <= numberCity ; i++) {
+            String city = scanner.nextLine();
+            double incomeMoney = Double.parseDouble(scanner.nextLine());
+            double expenses = Double.parseDouble(scanner.nextLine());
+            double profitEach = 0;
+
+            boolean noEvent = false;
+
+            if (i % 5 == 0) {
+                profitEach = incomeMoney - incomeMoney * 0.10 - expenses;
+                totalProfit = totalProfit + profitEach;
+                noEvent = true;
+            } else if (i % 3 == 0) {
+                if (!noEvent) {
+                    expenses = expenses + expenses * 0.5;
+                    profitEach = incomeMoney - expenses;
+                    totalProfit = totalProfit + profitEach;
+                }
+                } else {
+                    profitEach = incomeMoney - expenses;
+                    totalProfit = totalProfit + profitEach;
+                }
+            System.out.printf("In %s Burger Bus earned %.2f leva.%n", city, profitEach);
+        }
+        System.out.printf("Burger Bus total profit: %.2f leva.", totalProfit);
+
+    }
+
+}
+
+
